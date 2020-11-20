@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "490393771780",
+    "firebase_url": "https://barkodsatis1.firebaseio.com",
+    "project_id": "barkodsatis1",
+    "storage_bucket": "barkodsatis1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490393771780:android:8283a834b76115b7f73a51",
+        "android_client_info": {
+          "package_name": "com.example.barkod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490393771780-u74u1s401860bloapb7c6pgunjn0nqpc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM-BchWpm3dttGjRMsvUIWYQBs1Yje_Tk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490393771780-u74u1s401860bloapb7c6pgunjn0nqpc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
