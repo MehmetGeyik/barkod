@@ -1,3 +1,4 @@
+import 'package:barkod/servisler/yetkilendirmeservisi.dart';
 import 'package:flutter/material.dart';
 
 
@@ -12,9 +13,11 @@ class _AnasayfaState extends State<AnaSayfa> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          "Ana Sayfa",
-          style: TextStyle(fontSize: 20, color: Colors.white),
+        child: GestureDetector(onTap: () => YetkilendirmeServisi().cikisYap(),
+                  child: Text(
+            "Çıkış yap",
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
         ),
       ),
       backgroundColor: Colors.blue[700],
