@@ -1,4 +1,6 @@
+import 'package:barkod/modeller/kullanici.dart';
 import 'package:barkod/sayfalar/hesapolustur.dart';
+import 'package:barkod/servisler/firestoreservisi.dart';
 import 'package:barkod/servisler/yetkilendirmeservisi.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -144,7 +146,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
       });
       
       try{
-        await _yetkilendirmeServisi.googleIleGiris();
+        await _yetkilendirmeServisi.mailleGiris(email, sifre);
       } catch (hata) {
          setState(() {
         yukleniyor = false;
@@ -155,15 +157,26 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
     }
   }
 
-  void _googleIleGiris(){
+  void _googleIleGiris() async {
     var _yetkilendirmeServisi = Provider.of<YetkilendirmeServisi>(context, listen: false);
-
+     
     setState(() {
         yukleniyor = true;
       });
       
     try {
-      _yetkilendirmeServisi.googleIleGiris();
+     Kullanici kullanici = await _yetkilendirmeServisi.googleIleGiris();
+      if(kullanici != null){
+          Kullanici firestoreKullanici = await FireStoreServisi().kullaniciGetir(kullanici.id);
+          if (firestoreKullanici == null){
+            FireStoreServisi().kullaniciOlustur(
+            id: kullanici.id,
+            email: kullanici.email,
+            kullaniciAdi: kullanici.kullaniciAdi,
+            fotoUrl: kullanici.fotoUrl
+        );
+        }
+        }
     } catch(hata) {
 
       setState(() {
@@ -172,7 +185,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
 
       uyariGoster(hataKodu: hata.code);
     }
-
+  
   }
 
   uyariGoster({hataKodu}){

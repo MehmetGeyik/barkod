@@ -4,6 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class YetkilendirmeServisi {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  String aktifKullaniciId;
 
   Kullanici _kullaniciOlustur(User kullanici) {
     return kullanici == null ? null : Kullanici.firebasedenUret(kullanici);

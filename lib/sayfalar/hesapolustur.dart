@@ -1,3 +1,5 @@
+import 'package:barkod/modeller/kullanici.dart';
+import 'package:barkod/servisler/firestoreservisi.dart';
 import 'package:barkod/servisler/yetkilendirmeservisi.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -119,7 +121,10 @@ class _HesapOlusturState extends State<HesapOlustur> {
       yukleniyor = true;  
       });
       try {
-        await _yetkilendirmeServisi.mailleKayit(email, sifre);
+        Kullanici kullanici = await _yetkilendirmeServisi.mailleKayit(email, sifre);
+        if(kullanici != null){
+          FireStoreServisi().kullaniciOlustur(id: kullanici.id, email: email, kullaniciAdi: kullaniciAdi);
+        }
         Navigator.pop(context);
       } catch(hata){
         setState(() {
