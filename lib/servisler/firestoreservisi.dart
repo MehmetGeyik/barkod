@@ -23,4 +23,12 @@ class FireStoreServisi {
     }
     return null;
   }
+
+  void kullaniciGuncelle({String kullaniciId, String kullaniciAdi, String fotoUrl = "", String hakkinda}){
+    _firestore.collection("kullanicilar").doc(kullaniciId).update({
+      "kullaniciAdi": kullaniciAdi,
+      "hakkinda": hakkinda,
+      "fotoUrl": fotoUrl
+    });
+  }
 }

@@ -5,6 +5,7 @@ import 'package:barkod/sayfalar/urun.dart';
 import 'package:barkod/sayfalar/yukle.dart';
 import 'package:barkod/servisler/yetkilendirmeservisi.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 class AnaSayfa extends StatefulWidget {
@@ -29,6 +30,7 @@ class _AnasayfaState extends State<AnaSayfa> {
 
   @override
   Widget build(BuildContext context) {
+    String aktifKullaniciId = Provider.of<YetkilendirmeServisi>(context, listen: false).aktifKullaniciId;
     return Scaffold(
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
@@ -43,7 +45,7 @@ class _AnasayfaState extends State<AnaSayfa> {
           Yukle(),
           Satis(),
           Kasa(),
-          Profil(),
+          Profil(profilSahibiId: aktifKullaniciId,),
         ],
       ),
         bottomNavigationBar:  BottomNavigationBar(
