@@ -52,6 +52,8 @@ flutter:
   assets:
     - assets/images/avatar.png
     - assets/barkodsplashscreen.png
+    - assets/ic_launcher.png
+    
 
 
   # The following line ensures that the Material Icons font is

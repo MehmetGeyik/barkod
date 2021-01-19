@@ -1,5 +1,6 @@
 import 'package:barkod/modeller/kullanici.dart';
 import 'package:barkod/sayfalar/hesapolustur.dart';
+import 'package:barkod/sayfalar/sifremiunuttum.dart';
 import 'package:barkod/servisler/firestoreservisi.dart';
 import 'package:barkod/servisler/yetkilendirmeservisi.dart';
 import 'package:flutter/material.dart';
@@ -41,11 +42,13 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
     child: ListView(
       padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 60.0),
       children: <Widget>[
-        FlutterLogo(
-          size: 90.0,
-        ),
+        Image(
+          image: new AssetImage("assets/ic_launcher.png"),
+          width: 120.0,
+          height: 120.0,
+          ),
         SizedBox(
-          height: 80.0,
+          height: 70.0,
         ),
         TextFormField(
           autocorrect: true,
@@ -131,7 +134,12 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
           ),),
         )),
         SizedBox(height: 20.0,),
-        Center(child: Text("Şifremi Unuttum")),
+        Center(child: InkWell(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SifremiUnuttum()));
+          },
+          child: Text("Şifremi Unuttum")
+          )),
       ],
     ),
   );
